@@ -2,6 +2,7 @@ import React from "react";
 import Counter from "./components/Counter";
 import Todo from "./components/Todo";
 import ThemeToggle from "./components/ThemeToggle";
+import SimpleForm from "./components/SimpleForm";
 
 function App() {
   return (
@@ -16,6 +17,9 @@ function App() {
 
       {/* Experiment 3 */}
       <ThemeToggle />
+
+      {/* Experiment 4 */}
+      <SimpleForm />
     </div>
   );
 }
