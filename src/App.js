@@ -1,23 +1,17 @@
-import React, { useState } from "react";
+import React from "react";
+import Counter from "./components/Counter";
+import Todo from "./components/Todo";
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
-    <div style={{ textAlign: "center", marginTop: "100px" }}>
-      <h1>Simple Counter SPA</h1>
-      <h2>Count: {count}</h2>
+    <div style={{ textAlign: "center", marginTop: "50px" }}>
+      <h1>React SPA Experiments</h1>
+      
+      {/* Experiment 1: Counter */}
+      <Counter />
 
-      <button onClick={() => setCount(count + 1)}>
-        Increment
-      </button>
-
-      <button
-        onClick={() => setCount(count - 1)}
-        style={{ marginLeft: "10px" }}
-      >
-        Decrement
-      </button>
+      {/* Experiment 2: To-Do List */}
+      <Todo />
     </div>
   );
 }
