@@ -1,48 +1,81 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 function SimpleForm() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [submitted, setSubmitted] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    department: "",
+    contact: "",
+    email: "",
+    course: ""
+  });
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setSubmitted(true);
+  const [submittedData, setSubmittedData] = useState(null);
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const handleSubmit = () => {
+    setSubmittedData(formData);
   };
 
   return (
-    <div style={{ marginTop: "40px", padding: "20px" }}>
-      <h2>Simple Form SPA</h2>
+    <div className="card">
+      <h2>Student Registration Form</h2>
 
-      <form onSubmit={handleSubmit}>
-        <div>
-          <input
-            type="text"
-            placeholder="Enter Name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
-        </div>
+      <input
+        type="text"
+        name="name"
+        placeholder="Enter Name"
+        value={formData.name}
+        onChange={handleChange}
+      />
 
-        <div style={{ marginTop: "10px" }}>
-          <input
-            type="email"
-            placeholder="Enter Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </div>
+      <input
+        type="text"
+        name="department"
+        placeholder="Enter Department"
+        value={formData.department}
+        onChange={handleChange}
+      />
 
-        <button type="submit" style={{ marginTop: "10px" }}>
-          Submit
-        </button>
-      </form>
+      <input
+        type="tel"
+        name="contact"
+        placeholder="Enter Contact Number"
+        value={formData.contact}
+        onChange={handleChange}
+      />
 
-      {submitted && (
-        <div style={{ marginTop: "20px" }}>
-          <h4>Submitted Data:</h4>
-          <p>Name: {name}</p>
-          <p>Email: {email}</p>
+      <input
+        type="email"
+        name="email"
+        placeholder="Enter Email"
+        value={formData.email}
+        onChange={handleChange}
+      />
+
+      <input
+        type="text"
+        name="course"
+        placeholder="Enter Course"
+        value={formData.course}
+        onChange={handleChange}
+      />
+
+      <button onClick={handleSubmit}>Submit</button>
+
+      {submittedData && (
+        <div style={{ marginTop: "15px" }}>
+          <h3>Submitted Details</h3>
+          <p><b>Name:</b> {submittedData.name}</p>
+          <p><b>Department:</b> {submittedData.department}</p>
+          <p><b>Contact:</b> {submittedData.contact}</p>
+          <p><b>Email:</b> {submittedData.email}</p>
+          <p><b>Course:</b> {submittedData.course}</p>
         </div>
       )}
     </div>
